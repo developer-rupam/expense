@@ -1,38 +1,18 @@
-.App {
+.App{
   text-align: center;
 }
+@import url('./assets/css/font-face.css');
+@import url('./assets/vendor/font-awesome-4.7/css/font-awesome.min.css');
+@import url('./assets/vendor/font-awesome-5/css/fontawesome-all.min.css');
+@import url('./assets/vendor/mdi-font/css/material-design-iconic-font.min.css');
+@import url('./assets/vendor/bootstrap-4.1/bootstrap.min.css');
+@import url('./assets/vendor/animsition/animsition.min.css');
+@import url('./assets/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css');
+@import url('./assets/vendor/wow/animate.css');
+@import url('./assets/vendor/css-hamburgers/hamburgers.min.css');
+@import url('./assets/vendor/slick/slick.css');
+@import url('./assets/vendor/select2/select2.min.css');
+@import url('./assets/vendor/perfect-scrollbar/perfect-scrollbar.css');
+@import url('./assets/css/theme.css');
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}

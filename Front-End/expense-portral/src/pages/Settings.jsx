@@ -1,11 +1,13 @@
 import React from 'react';
 
-export class Settings extends React.Component {
+export default class Settings extends React.Component {
     render() {
         return (
-            <div className="App">
-                <h1>Settings</h1>
+            <div className="row">
+            <div className="col-md-12">
+                    <h1>Settings</h1>
             </div>
+        </div>
         )
     }
 }
