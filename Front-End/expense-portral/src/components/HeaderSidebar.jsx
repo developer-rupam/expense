@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import { SITENAME } from '../utils/init';
+import { SITENAME,SITENAMEALIAS } from '../utils/init';
+import { storeCurrentRoute } from '../utils/library';
+import { withRouter } from 'react-router-dom';
 
-export default class HeaderSidebar extends React.Component {
+
+ class HeaderSidebar extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {}
+    }
     render() {
         return (
+         //{showHeaderSidebar === true ? 
+         <Fragment>  
          <div>
         <header className="header-mobile d-block d-lg-none">
             <div className="header-mobile__bar">
@@ -75,6 +84,15 @@ export default class HeaderSidebar extends React.Component {
                 </div>
             </header>
         </div>
+        </Fragment>
+       
         )
     }
+    componentDidMount(){
+        /*** calling function for storing current route ***/
+        storeCurrentRoute(this.props.location.pathname)
+
+    }
 }
+
+export default withRouter(HeaderSidebar);
