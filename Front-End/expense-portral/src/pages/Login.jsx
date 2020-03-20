@@ -1,30 +1,88 @@
-import React from 'react';
-import HeaderSidebar from '../components/HeaderSidebar';
-import Footer from '../components/Footer';
+import React, { Fragment } from 'react';
 
 
-export default class Dashboard extends React.Component {
-    render() {
-        return (
-               
-                <div className="page-container">
-                <HeaderSidebar/>
-                <div className="main-content">
-                        <div className="section__content section__content--p30">
-                            <div className="container-fluid">
-                                <div className="row">
-                                    <div className="col-md-12">
-                                            <h1>Dashboard</h1>
-                                    </div>
-                                </div>
-                                <Footer/>
-                            </div>
-                        </div>
-                </div>  
-                </div> 
-        )
+export default class Login extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {};
+
+        this.emailRef = React.createRef();
+        this.passwordRef = React.createRef();
+
+        /***  binding functions ***/
+        this.handleLogin = this.handleLogin.bind(this)
+
+
+        
     }
 
+     /*** function defination for login ***/
+      handleLogin(e) {
+        e.preventDefault();
+        if(this.emailRef.current.value != '' && this.passwordRef.current.value != ''){
+
+        }else{
+
+        }
+    }
+
+    render() {
+
+        
+
+
+        return (
+              <Fragment>
+                  <div className="page-wrapper">
+                    <div className="page-content--bge5">
+                        <div className="container">
+                            <div className="login-wrap">
+                                <div className="login-content">
+                                    <div className="login-logo">
+                                       
+                                            <img src={require("../assets/images/icon/logo.png")} alt="CoolAdmin"/>
+                                        
+                                    </div>
+                                    <div className="login-form">
+                                        <form  onSubmit = {this.handleLogin}>
+                                            <div className="form-group">
+                                                <label>Email Address</label>
+                                                <input className="au-input au-input--full" type="email" name="email" ref={this.emailRef} placeholder="Email"/>
+                                            </div>
+                                            <div className="form-group">
+                                                <label>Password</label>
+                                                <input className="au-input au-input--full" type="password" name="password" ref={this.passwordRef} placeholder="Password"/>
+                                            </div>
+                                            <div className="login-checkbox">
+                                                <label>
+                                                    {/* <input type="checkbox" name="remember"/>Remember Me */}
+                                                </label>
+                                                <label>
+                                                    <a href="#">Forgotten Password?</a>
+                                                </label>
+                                            </div>
+                                            <button  className="au-btn au-btn--block au-btn--green m-b-20" type="submit">sign in</button>
+                                            
+                                        </form>
+                                        <div className="register-link">
+                                            <p>
+                                                Don't you have account?
+                                                <a href="#">Sign Up Here</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+              </Fragment> 
+              
+        )
+    }
+    
     
 }
 
