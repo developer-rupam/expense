@@ -7,14 +7,21 @@ const path = require('path');
 
 const db = require('./dbConnect');
 const collection = "expense_db";
+const init = require('./utils/init');
+
 
 db.connect((err)=>{
     if(err){
         console.log('ERROR : Unable to connect to database');
         process.exit(1);
     }else{
-        app.listen(3000,()=>{
-            console.log('Hurray!! app listening to port 3000');
+        app.listen(init.PORT,()=>{
+            console.log('Hurray!! app listening to port ' + init.PORT);
         })
     }
 });
+
+/*** calling APIs ***/
+
+/*** Login ***/
+app.use('/Login',require('./api/Login'));
