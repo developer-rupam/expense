@@ -6,6 +6,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import {BrowserRouter as Router, Switch,Route,withRouter} from 'react-router-dom';
 import { SITENAMEALIAS } from './utils/init';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 export default class App extends React.Component {
