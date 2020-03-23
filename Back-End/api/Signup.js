@@ -9,6 +9,8 @@ const library = require('../utils/library');
 /*** importing variables from init ***/ 
 const init=require('../utils/init');
 
+const collection = 'users';
+
 /*** Initialing API response object ***/
 let response={error:{},result:{}};
 
@@ -20,7 +22,7 @@ router.post('/',(req,res)=>{
     const password = req.body.password;
 
     if(email!='' && password!='' && phone != '' && name != ''){
-        db.getDB().collection(init.COLLECTION).insert({email:email,password:password,fullname : name,phone : phone},(err,result)=>{
+        db.getDB().collection(collection).insert({email:email,password:password,fullname : name,phone : phone},(err,result)=>{
             if(err){
                 response.error.error_data=1;
                 response.error.error_msg=err;
