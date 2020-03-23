@@ -29,3 +29,7 @@ db.connect((err)=>{
 app.use('/Login',require('./api/Login'));
 /*** Signup ***/
 app.use('/Signup',require('./api/Signup'));
+/*** Add billing type ***/
+app.use('/AddBillingType',require('./api/AddBillingType'));
+/*** Add transactione ***/
+app.use('/AddTransaction',require('./api/AddTransaction'));
