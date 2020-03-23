@@ -1,4 +1,5 @@
 
- const PORT = 8000
+ const PORT = 8000;
+ const COLLECTION = 'expense_collection'
 
- module.exports = {PORT}
+ module.exports = {PORT,COLLECTION}
