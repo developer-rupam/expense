@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
-import { showConfirm } from '../utils/library'
+import { showConfirm,callApi } from '../utils/library';
+import { WEBSERVICE } from '../utils/init';
 import { Link } from 'react-router-dom';
 
 
@@ -30,7 +31,15 @@ export default class Signup extends React.Component {
             this.emailRef.current.value != '' && this.passwordRef.current.value != '' &&
             this.reTypePasswordRef.current.value != ''
         ){
-
+            var payload = { 
+                name : this.fullNameRef.current.value,
+                email : this.emailRef.current.value,
+                phone : this.phoneRef.current.value,
+                password : this.passwordRef.current.value,
+            }
+            callApi(WEBSERVICE + '/Signup',payload,function(data){
+                console.log(data);
+            });
         }else{
            
         }

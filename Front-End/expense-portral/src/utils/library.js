@@ -1,5 +1,6 @@
 import { SITENAMEALIAS } from './init'
 import Swal from 'sweetalert2'
+const axios = require('axios');
 
 /*** function defination for storing current route ***/
 export const storeCurrentRoute = (route) =>{
@@ -21,4 +22,18 @@ export const showConfirm = (callback) => {
             callback();
         }
       })
+}
+
+/*** function defination for calling API ***/
+export const callApi = (url,obj,callback) =>{
+  
+  var payload = JSON.stringify(obj);
+  var headers = {headers: {'Content-Type': 'application/json',}};
+
+  axios.post(url, payload,headers)
+  .then(callback())
+  .catch(function (error) {
+    console.log(error);
+  });
+
 }
