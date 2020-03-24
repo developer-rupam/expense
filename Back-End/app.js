@@ -33,6 +33,8 @@ app.use('/Signup',require('./api/Signup'));
 app.use('/AddBillingType',require('./api/AddBillingType'));
 /*** Add transactione ***/
 app.use('/AddTransaction',require('./api/AddTransaction'));
+/*** Fetch All transactione ***/
+app.use('/GetAllTransactions',require('./api/GetAllTransactions'));
 /***  Add Assets ***/
 app.use('/AddAssets',require('./api/AddAssets'));
 /***  Fetch All Assets ***/
