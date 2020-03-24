@@ -9,7 +9,7 @@ const library = require('../utils/library');
 /*** importing variables from init ***/ 
 const init=require('../utils/init');
 
-const collection = 'billing_type';
+const collection = 'asset_type';
 
 /*** Initialing API response object ***/
 let response={error:{},result:{}};
@@ -17,13 +17,12 @@ let response={error:{},result:{}};
 /*** login using post ***/
 router.post('/',(req,res)=>{
     const userId = req.body.userId;
-    const billingTypeName = req.body.billingTypeName;
-    const assetId = req.body.assetId;
-    const minLimit = req.body.minLimit;
-    const maxLimit = req.body.maxLimit;
+    const assetName = req.body.assetName;
+    const assetAlias = req.body.assetAlias;
+    const description = req.body.description;
 
-    if(userId!=undefined && billingTypeName!=undefined && assetId != undefined ){
-        db.getDB().collection(collection).insert({userId:userId,billingTypeName:billingTypeName,assetId:assetId,maxLimit:maxLimit,minLimit:minLimit},(err,result)=>{
+    if(userId!=undefined && assetName!=undefined && assetAlias != undefined ){
+        db.getDB().collection(collection).insert({userId:userId,assetName:assetName,assetAlias:assetAlias,description:description},(err,result)=>{
             if(err){
                 response.error.error_data=1;
                 response.error.error_msg=err;
