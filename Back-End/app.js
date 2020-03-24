@@ -35,6 +35,8 @@ app.use('/AddBillingType',require('./api/AddBillingType'));
 app.use('/AddTransaction',require('./api/AddTransaction'));
 /*** Fetch All transactione ***/
 app.use('/GetAllTransactions',require('./api/GetAllTransactions'));
+/*** Fetch  transaction details ***/
+app.use('/GetTransactionDetails',require('./api/GetTransactionDetails'));
 /***  Add Assets ***/
 app.use('/AddAssets',require('./api/AddAssets'));
 /***  Fetch All Assets ***/
