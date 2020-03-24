@@ -41,3 +41,5 @@ app.use('/GetTransactionDetails',require('./api/GetTransactionDetails'));
 app.use('/AddAssets',require('./api/AddAssets'));
 /***  Fetch All Assets ***/
 app.use('/GetAllAssets',require('./api/GetAllAssets'));
+/***  Update Transaction ***/
+app.use('/UpdateTransaction',require('./api/UpdateTransaction'));
