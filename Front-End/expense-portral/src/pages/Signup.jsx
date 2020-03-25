@@ -9,7 +9,9 @@ import { signup } from '../utils/service';
 
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            isPasswordMatched : false,
+        };
 
         this.fullNameRef = React.createRef();
         this.emailRef = React.createRef();
@@ -18,19 +20,30 @@ import { signup } from '../utils/service';
         this.reTypePasswordRef = React.createRef();
 
         /***  binding functions ***/
-        this.handleSignup = this.handleSignup.bind(this)
+        this.handleSignup = this.handleSignup.bind(this);
+        this.matchPassword = this.matchPassword.bind(this);
 
 
         
     }
 
+    /*** function defination for ***/
+    matchPassword(){
+        if(this.passwordRef.current.value == this.reTypePasswordRef.current.value){
+            var passwordMatchStatus = true
+        }else{
+            var passwordMatchStatus = false
+        }
+        this.setState({isPasswordMatched : passwordMatchStatus})
+    }
+    
      /*** function defination for login ***/
       handleSignup(e) {
         e.preventDefault();
         if(
             this.fullNameRef.current.value != '' && this.phoneRef.current.value != '' &&
             this.emailRef.current.value != '' && this.passwordRef.current.value != '' &&
-            this.reTypePasswordRef.current.value != ''
+            this.reTypePasswordRef.current.value != '' && this.state.isPasswordMatched == true
         ){
             var payload = { 
                 name : this.fullNameRef.current.value,
@@ -90,11 +103,12 @@ import { signup } from '../utils/service';
                                             </div>
                                             <div className="form-group">
                                                 <label>Password</label>
-                                                <input className="au-input au-input--full" type="password" name="password" ref={this.passwordRef} placeholder="Password"/>
+                                                <input className="au-input au-input--full" type="password" name="password" ref={this.passwordRef} onKeyUp={this.matchPassword} placeholder="Password"/>
                                             </div>
                                             <div className="form-group">
                                                 <label>Re-Type Password</label>
-                                                <input className="au-input au-input--full" type="password" name="password" ref={this.reTypePasswordRef} placeholder="Re-Type Password"/>
+                                                <input className="au-input au-input--full" type="password" name="password" ref={this.reTypePasswordRef} onKeyUp={this.matchPassword} placeholder="Re-Type Password"/>
+                                                {this.state.isPasswordMatched ? <span className="text-success"> <i className="fas fa-check-circle"></i> Password Matched</span> : <span className="text-danger"> <i className="fas fa-times-circle"></i> Password Mismatched</span>}
                                             </div>
                                            
                                             <button  className="au-btn au-btn--block au-btn--green m-b-20" type="submit">sign up</button>
