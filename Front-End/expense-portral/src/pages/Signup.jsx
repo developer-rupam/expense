@@ -1,10 +1,11 @@
 import React, { Fragment } from 'react';
-import { showConfirm,callApi } from '../utils/library';
+import { showConfirm } from '../utils/library';
 import { WEBSERVICE } from '../utils/init';
-import { Link } from 'react-router-dom';
+import { Link,withRouter } from 'react-router-dom';
+import { signup } from '../utils/service';
 
 
-export default class Signup extends React.Component {
+ class Signup extends React.Component {
 
     constructor(props) {
         super(props);
@@ -37,11 +38,22 @@ export default class Signup extends React.Component {
                 phone : this.phoneRef.current.value,
                 password : this.passwordRef.current.value,
             }
-            callApi(WEBSERVICE + '/Signup',payload,function(data){
-                console.log(data);
-            });
-        }else{
+
+            signup(payload).then(function(res){
+                var response = res.data;
+                if(response.error.error_data != 0){
+                    //TODO: Show error toast
+                }else{
+                    //TODO: success alert here
+                    console.log(this.props)
+                    this.props.history.push('/')
+                }
+            }.bind(this)).catch(function(err){
+                console.log(err)
+            })
            
+        }else{
+           //TODO: error alert here
         }
     }
 
@@ -109,3 +121,4 @@ export default class Signup extends React.Component {
     
 }
 
+export default withRouter(Signup)
