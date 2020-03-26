@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { showToast } from '../utils/library';
+import { showToast,showHttpError } from '../utils/library';
 import { WEBSERVICE } from '../utils/init';
 import { Link,withRouter } from 'react-router-dom';
 import { signup } from '../utils/service';
@@ -62,7 +62,7 @@ import { signup } from '../utils/service';
                     this.props.history.push('/')
                 }
             }.bind(this)).catch(function(err){
-                console.log(err)
+                showHttpError(err)
             })
            
         }else{

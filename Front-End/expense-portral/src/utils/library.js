@@ -44,3 +44,21 @@ export const showToast = (type,message) => {
   })
 }
 
+/***  funtion defination for showing http error ***/
+export const showHttpError = (error) => {
+  if(error.response != undefined){
+    var code = error.response.code;
+    if(code == '401'){
+      showToast('error','Authentication Failed')
+    }else if(code == '404' || code == '403' || code == '400'){
+      showToast('error','Failed to connect with the server');
+    }else if(code == '500'){
+      showToast('error','Internal Server Error');
+    }else{
+      showToast('error','Technical Error');
+    }
+  }else{
+    showToast('error',error)
+  }
+}
+
