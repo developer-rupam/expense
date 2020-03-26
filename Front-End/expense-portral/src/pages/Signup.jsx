@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { showConfirm } from '../utils/library';
+import { showToast } from '../utils/library';
 import { WEBSERVICE } from '../utils/init';
 import { Link,withRouter } from 'react-router-dom';
 import { signup } from '../utils/service';
@@ -55,9 +55,9 @@ import { signup } from '../utils/service';
             signup(payload).then(function(res){
                 var response = res.data;
                 if(response.error.error_data != 0){
-                    //TODO: Show error toast
+                    showToast('error',response.error.error_msg);
                 }else{
-                    //TODO: success alert here
+                    showToast('success','Sign up successfull, please login to continue')
                     console.log(this.props)
                     this.props.history.push('/')
                 }
@@ -66,7 +66,7 @@ import { signup } from '../utils/service';
             })
            
         }else{
-           //TODO: error alert here
+           showToast('error','Please provide all the details')
         }
     }
 

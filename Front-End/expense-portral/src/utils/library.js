@@ -1,6 +1,7 @@
 import { SITENAMEALIAS } from './init'
 import Swal from 'sweetalert2'
 
+
 /*** function defination for storing current route ***/
 export const storeCurrentRoute = (route) =>{
     localStorage.setItem(SITENAMEALIAS + '_current_page',route);
@@ -21,5 +22,25 @@ export const showConfirm = (callback) => {
             callback();
         }
       })
+}
+
+/*** function defination for showing toast ***/
+export const showToast = (type,message) => {
+  const Toast = Swal.mixin({
+    toast: true,
+    position: 'bottom-end',
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: false,
+    onOpen: (toast) => {
+      //toast.addEventListener('mouseenter', Swal.stopTimer)
+      //toast.addEventListener('mouseleave', Swal.resumeTimer)
+    }
+  })
+  
+  Toast.fire({
+    icon: type,
+    title: message
+  })
 }
 
