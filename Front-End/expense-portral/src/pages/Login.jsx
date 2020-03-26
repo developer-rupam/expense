@@ -1,6 +1,8 @@
 import React, { Fragment } from 'react';
-import { showConfirm } from '../utils/library'
+import { showToast } from '../utils/library'
 import { Link } from 'react-router-dom';
+import Loader from '../components/Loader';
+
 
 
 
@@ -8,7 +10,9 @@ export default class Login extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            showLoader : false
+        };
 
         this.emailRef = React.createRef();
         this.passwordRef = React.createRef();
@@ -24,9 +28,9 @@ export default class Login extends React.Component {
       handleLogin(e) {
         e.preventDefault();
         if(this.emailRef.current.value != '' && this.passwordRef.current.value != ''){
-
+            
         }else{
-           
+            showToast('error','Please provide email & password')
         }
     }
 
@@ -81,6 +85,7 @@ export default class Login extends React.Component {
                     </div>
 
                 </div>
+                <Loader show={this.state.showLoader}/>
               </Fragment> 
               
         )
