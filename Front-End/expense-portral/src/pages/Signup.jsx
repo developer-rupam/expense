@@ -24,6 +24,7 @@ import Loader from '../components/Loader';
         /***  binding functions ***/
         this.handleSignup = this.handleSignup.bind(this);
         this.matchPassword = this.matchPassword.bind(this);
+        this.checkPhone = this.checkPhone.bind(this);
 
 
         
@@ -39,6 +40,16 @@ import Loader from '../components/Loader';
         this.setState({
             isPasswordMatched : passwordMatchStatus,
         })
+    }
+
+    /*** function defination for checking for phone ***/
+    checkPhone(){
+        if(isNaN(this.phoneRef.current.value)){
+            this.phoneRef.current.value = '';
+            showToast('error','Please provide valid phone number')
+        }else{
+
+        }
     }
     
      /*** function defination for login ***/
@@ -104,7 +115,7 @@ import Loader from '../components/Loader';
                                             </div>
                                             <div className="form-group">
                                                 <label>Phone</label>
-                                                <input className="au-input au-input--full" type="text" name="phone" ref={this.phoneRef} placeholder="Phone"/>
+                                                <input className="au-input au-input--full" type="text" name="phone" ref={this.phoneRef} onKeyUp={this.checkPhone} placeholder="Phone"/>
                                             </div>
                                             <div className="form-group">
                                                 <label>Password</label>
