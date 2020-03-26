@@ -15,4 +15,46 @@
 @import url('./assets/vendor/perfect-scrollbar/perfect-scrollbar.css');
 @import url('./assets/css/theme.css');
 
+/* Page Loader ================================= */
+.page-loader-wrapper,
+.lodr-overlay {
+  z-index: 99999999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: #eee;
+  overflow: hidden;
+  text-align: center;
+}
+.page-loader-wrapper p {
+  font-size: 13px;
+  margin-top: 10px;
+  font-weight: bold;
+  color: #444;
+}
+.page-loader-wrapper .loader,
+.gif-loader {
+  position: relative;
+  top: calc(50% - 30px);
+}
+
+.lodr-overlay {
+  background: rgba(0, 0, 0, 0.4) !important;
+}
+.lodr-overlay p {
+  color: #fff;
+}
+
+.show-segment{
+  display:block;
+}
+
+.hide-segment{
+  display:none;
+}
+
 

@@ -3,6 +3,7 @@ import { showToast,showHttpError } from '../utils/library';
 import { WEBSERVICE } from '../utils/init';
 import { Link,withRouter } from 'react-router-dom';
 import { signup } from '../utils/service';
+import Loader from '../components/Loader';
 
 
  class Signup extends React.Component {
@@ -11,6 +12,7 @@ import { signup } from '../utils/service';
         super(props);
         this.state = {
             isPasswordMatched : false,
+            showLoader : false
         };
 
         this.fullNameRef = React.createRef();
@@ -34,7 +36,9 @@ import { signup } from '../utils/service';
         }else{
             var passwordMatchStatus = false
         }
-        this.setState({isPasswordMatched : passwordMatchStatus})
+        this.setState({
+            isPasswordMatched : passwordMatchStatus,
+        })
     }
     
      /*** function defination for login ***/
@@ -51,8 +55,9 @@ import { signup } from '../utils/service';
                 phone : this.phoneRef.current.value,
                 password : this.passwordRef.current.value,
             }
-
+            this.setState({showLoader : true})
             signup(payload).then(function(res){
+                this.setState({showLoader : false})
                 var response = res.data;
                 if(response.error.error_data != 0){
                     showToast('error',response.error.error_msg);
@@ -62,8 +67,9 @@ import { signup } from '../utils/service';
                     this.props.history.push('/')
                 }
             }.bind(this)).catch(function(err){
+                this.setState({showLoader : false})
                 showHttpError(err)
-            })
+            }.bind(this))
            
         }else{
            showToast('error','Please provide all the details')
@@ -72,7 +78,6 @@ import { signup } from '../utils/service';
 
     render() {
 
-        
 
 
         return (
@@ -127,6 +132,7 @@ import { signup } from '../utils/service';
                     </div>
 
                 </div>
+                <Loader show={this.state.showLoader}/>
               </Fragment> 
               
         )
